@@ -1,4 +1,0 @@
-2019-10-12 19:34:05 [31merror[39m: File Location :  controller.login.loginController -- Line Number :  91 -- Description :  status code : 404 -- description : Failure While creating token
-2019-10-16 15:22:56 [31merror[39m: File Location :  model.country -- Line Number :  undefined -- Description :  Fail to fetch country list at country model
-2019-10-16 15:33:29 [31merror[39m: File Location :  model.country -- Line Number :  undefined -- Description :  Fail to fetch country list at country model
-2019-10-16 15:33:55 [31merror[39m: File Location :  model.country -- Line Number :  undefined -- Description :  Fail to fetch country list at country model
