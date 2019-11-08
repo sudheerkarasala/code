@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="logo_container">
+      <img src="../../../../../assets/images/logo_white.png">
+    </div>
+    
+    <div class="row">
+      <div class="col-lg-6 lft_bg_img bg_img_1">
+        &nbsp;
+      </div>
+      <div class="col-lg-6 rt_cont offset-lg-6">
+          <fieldset style="margin-top: 175px;">
+              <h2 class="header_bar">Confirm your mobile number</h2>
+              <div class="form-group">
+                <h5 class="header_para">A 6-digit code has been sent to <span class="blue1">+{{mobile}}</span></h5>
+                <input type="text" class="form-control" id="emailconfirm" name="opt" class="otp"
+                [(ngModel)]="mobileOtp" minlength=6 maxlength=6>
+               <div class="m_t_20">You can resend the code if it doesn't arrive in <span
+                    id="pageBeginCountdownText">{{timer}}</span> sec</div>
+                  <a [href]="" id="emailResendLink"
+                  style="color: blue; cursor: pointer;" (click)="mobileResendLink(mobileOtp)">Resend
+                  OTP</a>
+              </div>
+              <button name="next" id="step3" class="next btn btn-primary" (click)="verifyOTPAndSubmit(mobileOtp)">Continue</button>
+            </fieldset>
+      </div>
+    </div>
+  </div>

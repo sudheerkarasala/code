@@ -1,0 +1,57 @@
+@import "../../../../styles.scss";
+
+.jumbotron {
+  padding: 20px;
+  border: 1px solid #324c57;
+  background: #b3d7ff;
+}
+.tital,
+p,
+h4 {
+  color: #2766a8;
+}
+.complete_title {
+  display: block;
+  font-size: 3.125rem;
+  font-weight: 600;
+  margin: 180px 40px;
+  color: $font-color-active;
+  h6 {
+    font-size: 1.725rem;
+    font-weight: 500;
+    color: $font-color;
+  }
+  p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $font-color;
+  }
+}
+.verify {
+  min-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px;
+  h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $font-color-active;
+  }
+  p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.125rem;
+    color: $font-color-active;
+  }
+}
+.complete_img_cnt {
+  margin: 50px 40px;
+}
+@media (max-width: 480px) {
+  .complete_title {
+    margin: 80px 40px;
+  }
+  .complete_img_cnt {
+    margin: 0;
+  }
+}

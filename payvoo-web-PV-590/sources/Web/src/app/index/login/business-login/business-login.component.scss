@@ -1,0 +1,163 @@
+body{
+    font-family: 'Lato', sans-serif;
+  
+  }
+  .lft_bg_img{
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+      left: 0px;
+      top: 0px;
+      bottom: 0px;
+  } 
+  .bg_img_1{
+    background-image: url("../../../../assets/images/analysis-banking-businesswoman-1451448.jpg");
+  }
+  .rt_cont{
+    padding: 50px 150px;
+  
+  }
+  
+  .check_div{
+    margin-top: 150px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .check_div img{
+    width: 100px;
+  }
+  .header_bar{
+    position: relative;
+    margin-bottom: 30px;
+    color: #545454;
+  }
+  .header_para{
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #545454;
+    font-weight: 400;
+  }
+  
+  .m_t_200{
+    margin-top: 200px;
+  }
+  .m_b_20{
+    margin-bottom: 20px;
+  }
+  .m_t_20{
+    margin-top:20px;
+  }
+  .m_r_20{
+    margin-right: 20px;
+  }
+  
+  .logo_container{
+    width: 100%;
+    height: 0px;
+    position: relative;
+    z-index: 5; 
+  }
+  .logo_container img{
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: -40px;
+    
+  }
+
+  .all_fields
+  {
+    color: red;
+    position: relative;
+    top: -8px;
+    font-size: 15px;
+  }
+
+  .forgot1
+  {
+    color:#2766a8 !important;
+    cursor: pointer;
+  }  
+  #user_form fieldset:not(:first-of-type) {
+      display: none;
+    }
+    .progress {
+      display: -ms-flexbox;
+      display: flex;
+      height: 5px;
+      overflow: hidden;
+      font-size: .75rem;
+      background-color:#f8c015;
+      border-radius: 4px;
+      width: 80%;
+      margin: auto;
+      margin-top: 200px;
+      margin-bottom: 20px;
+  }
+  
+  
+  .progress-bar {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-pack: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      white-space: nowrap;
+      background-color:#2766a8;
+      transition: width .6s ease;
+  }
+  
+  
+  $num-of-char: 6;
+  $char-width: 1ch;
+  $gap: .4 * $char-width;
+  $in-w: $num-of-char * ($char-width + ($gap));
+  
+  
+  .otp{
+    display: block;
+    border: none;
+    width: 11.6ch;
+    background: repeating-linear-gradient(90deg, #000 0, #000 1.3ch, transparent 0, transparent 1.8ch) 0 100%/10ch 1px no-repeat;
+    font: 4.8ch droid sans mono, consolas, monospace;
+    letter-spacing: 0.74ch;
+    padding: 8px;
+    &:focus{
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+
+  
+@media (max-width: 768px) {
+  .lft_bg_img {
+    height: 70px;
+    min-height: auto;
+    z-index: 4;
+    background-position: center;
+  }
+  .rt_cont {
+    padding: 10px 30px;
+  }
+  .logo_container img {
+    width: 160px;
+    top: -20px;
+    position: fixed;
+  }
+  .m_t_200{
+    margin-top: 150px;
+  }
+}
+
+
+@media (max-width: 480px){
+
+}

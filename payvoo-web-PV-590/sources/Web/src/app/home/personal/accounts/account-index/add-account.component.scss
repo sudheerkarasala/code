@@ -1,0 +1,43 @@
+@import "../../../../../styles.scss";
+
+.page_container {
+  padding: 15px 25px;
+}
+.page_header {
+  display: inline-block;
+}
+
+.acc_navbar {
+  padding-bottom: 0px;
+  border-bottom: 1px solid $color-primary;
+  background-color: $body-background;
+  .navbar-nav {
+    li.nav-item {
+      &:focus {
+        outline: none;
+        user-select: none;
+      }
+      &.active {
+        a {
+          border-bottom: 2px solid $color-secondary;
+          opacity: 1;
+          outline: none;
+        }
+      }
+      a {
+        margin-bottom: -1px;
+        opacity: 0.6;
+        padding: 10px 30px;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        &:focus,
+        &:hover {
+          border-bottom: 2px solid $color-secondary;
+          outline: none;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+

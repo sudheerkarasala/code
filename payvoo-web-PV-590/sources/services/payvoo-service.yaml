@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: payvooservices
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  payvooservices
+    spec:
+      containers:
+        - name:  payvooservices
+          image: <dockerhub_username/imagename:tagname>
+          ports:
+            - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  payvooservices
+  labels:
+    name:  payvooservices
+spec:
+  ports:
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app:  payvooservices
+  type: NodePort

@@ -1,0 +1,91 @@
+<div class="container-fluid">
+<form transForm="ngForm">
+  <div class="m-b-20">
+    <div class="tran_drpdwn">
+      <select class="form-control" [(ngModel)]='selCurId' name="SelCurrency" >
+          <!-- (change)=selectedCurrency($event) -->
+          <option [value]=0>All</option>
+          <option *ngFor="let x of currencyType" [value]=x.account_no>{{x.currency }}</option>
+      </select>
+    </div>
+    <div class="tran_drpdwn">
+      <select class="form-control" name="transMonths">
+        <option *ngFor="let x of filterDate" [value]=x.date>{{x.months }}</option>
+      </select>
+    </div>
+    <div class="srch_cnt transactions">
+      <input type="text" name="key" class="form-control" [(ngModel)]="search_currencies" size="25" placeholder="Search...">
+    </div>
+  </div>
+  <div class="trans_cont">
+      <h5>{{selCurType}} </h5>
+    <div class="trans_day" *ngFor="let item of transList  | filter:selCurId">
+      <div class="trans_date">{{item.created_on}}</div>
+      <ul class="trans_lst">
+        <li *ngFor="let x of item.data | filter:search_currencies"  (click)="getCurrentTransDetails(x)" data-toggle="modal" data-target="#myModal">
+          <div class="trans_type">
+            <i class="trans_icn tran_icn_transfer"></i>
+          </div>
+          <div class="trans_data">
+            <h6>To {{x.opposite_account_owner}}</h6>
+            <span>{{x.created_on}}</span>
+          </div>
+          <div id='trans_amt' [ngClass]="{'text-success': x.transaction_type=='CR', 'text-danger':x.transaction_type=='DB' }">
+           <span *ngIf="x.transaction_type=='CR'">+</span> <span *ngIf="x.transaction_type=='DB'">-</span> {{x.amount}}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <div class="trans_info">
+            <div class="trans_img">
+              <img src="../../../../../../assets/images/group-of-people.jpg">
+            </div>
+            <div class="text-center">
+              <h3 class="trans_title">transfer to {{opositeOwner}}</h3>
+              <h4 id="trans_amnt" [ngClass]="{'text-success': transaction_type=='CR', 'text-danger':transaction_type=='DB' }">
+                  <span *ngIf="transaction_type=='CR'">+</span> <span *ngIf="transaction_type=='DB'">-</span>{{amount}}
+              </h4>
+            </div>
+            <div class="trans_info">
+              <ul>
+                <li>
+                  <span>Date</span>
+                  <p>{{transDate}}</p>
+                </li>
+                <li>
+                  <span>Amount</span>
+                  <p>{{amount}}</p>
+                </li>
+                <li>
+                  <span>Fee</span>
+                  <p>00</p>
+                </li>
+                <li>
+                  <span>Total</span>
+                  <p>{{amount}}</p>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <button class="btn btn-block btn-outline-primary" name="cancel" data-dismiss="modal"
+                  aria-label="Close">Cancel</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-block btn-primary" data-dismiss="modal" name="statement" aria-label="Close">Statement</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

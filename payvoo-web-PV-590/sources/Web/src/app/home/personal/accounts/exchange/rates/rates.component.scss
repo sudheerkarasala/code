@@ -1,0 +1,77 @@
+@import "../../../../../../styles.scss";
+
+.page_container {
+  padding: 15px 25px;
+}
+.additm {
+  color: #246bad;
+  padding: 15px 10px;
+  cursor: pointer;
+  .additm_icn {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #246bad;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 40px;
+    margin-right: 20px;
+  }
+  border-bottom: 1px solid #dadada;
+}
+
+.ctry_cnt {
+  padding: 20px;
+}
+
+.rates_cntr {
+  display: block;
+  padding: 15px 10px;
+  border-bottom: 1px solid #dadada;
+  font-size: 1.125rem;
+  font-weight: 600;
+  .frm_cncy {
+    display: inline-block;
+    vertical-align: middle;
+    span {
+      display: block;
+      font-size: 0.725rem;
+      color: $font-color;
+      text-align: right;
+    }
+  }
+  .to_cncy {
+    float: right;
+    span {
+      display: block;
+      font-size: 0.725rem;
+      color: $font-color;
+      text-align: right;
+    }
+  }
+  .del_cntr {
+    float: right;
+    margin-left: 20px;
+    margin-top: 7px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $color-danger;
+    text-align: center;
+    line-height: 27px;
+    font-size: 16px;
+    border-radius: 50%;
+    padding: 0px;
+    cursor: pointer;
+  }
+}
+.exchn_content
+{
+  .paginationControl
+  {
+    float:right;
+    top:20px;
+    position:relative;
+  }
+}

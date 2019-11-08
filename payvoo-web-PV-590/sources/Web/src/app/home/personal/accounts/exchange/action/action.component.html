@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="additm" data-toggle="modal" data-target="#addActionModal">
+    <div class="additm_icn"><i class="fa fa-plus"></i>
+    </div>
+    <span>Add Action</span>
+  </div>
+  <div class="action_itm_cnt" *ngFor="let x of autoExchangeData | paginate:{itemsPerPage:15,currentPage:currentPage}">
+    <div class="lft_itm" *ngIf="x.account_no!= 0">
+      <div class="action_icn">
+        <i class="fa fa-bell"></i>
+      </div>
+      <div class="action_itm">
+        <h5>
+          {{x.from_currency}} {{x.amount}} =
+          {{x.to_currency}} {{x.amount * x.target_amount}}
+        </h5>
+        <p>Auto Exchange-Current: {{x.from_currency}} 1 = {{x.to_currency}} {{x.currency_rate}}</p>
+      </div>
+    </div>
+    <div class="lft_itm" *ngIf="x.account_no === 0">
+      <div class="action_icn">
+        <i class="fa fa-bell"></i>
+      </div>
+      <div class="action_itm">
+        <h5>
+
+          {{x.from_currency}} {{x.target_amount}} =
+          {{x.to_currency}} {{(x.target_amount * x.currency_rate).toFixed(2)}}
+        </h5>
+        <p> Price Alert: {{x.from_currency}} 1 = {{x.to_currency}} {{x.currency_rate}}</p>
+      </div>
+    </div>
+
+    <div class="rt_itm">
+      <i class="fa fa-trash-o" aria-hidden="true" (click)=deleteAutoExchangeAlert(x.auto_exchange_id)></i>
+    </div>
+
+  </div>
+  <div class="paginationControl" *ngIf=getAutoAlerts>
+    <pagination-controls></pagination-controls>
+  </div>
+  <!--- choose auto Currency Modal -->
+
+  <div class="modal" id="addActionModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">
+            Choose an action to continue
+          </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="card exhng_cnt hide-action" (click)=autoExchModal()>
+            <div class="img_cnt">
+              <img src="../assets/images/auto-exchange.png" />
+            </div>
+            <div class="content_cnt ">
+              <h5>Auto Exchange</h5>
+              <p>Exchange currencies when they hit a certain value</p>
+            </div>
+          </div>
+          
+          <div class="card exhng_cnt" (click)="autoPriceAlert()">
+            <div class="img_cnt">
+              <img src="../assets/images/notifications.png" />
+            </div>
+            <div class="content_cnt">
+              <h5>Price Alert</h5>
+              <p>We'll let you know when that currency hit that value</p>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button class="btn btn-primary" type="button" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

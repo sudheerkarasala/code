@@ -1,0 +1,178 @@
+<div class="container-fluid">
+  <div class="title_cnt">
+    <div class="title">
+      All accounts
+    </div>
+    <div class="rt_cnt">
+      <div id="AddNew" class="add_new" data-toggle="modal" data-target="#exampleModal4" (click)="statusCurrency()">
+        Add new account
+      </div>
+      <div class="acc_style">
+        <i class="fa fa fa-th-large"  (click)="gridView()"  [class.active]="gridActive"></i>
+        <i class="fa fa fa-th-list"  (click)="listView()" [class.active]="listActive"></i>
+      </div>
+      <div class="srch_cnt">
+        <input type="text" name="key" class="form-control" [(ngModel)]="search_accounts" size="25" placeholder="Search...">
+        <i class="fa fa-search search_open"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout" role="document">
+    <div class="modal-content ov_y_auto cntry_lst_mdl">
+
+      <button type="button" class="close close_crcl" data-dismiss="modal" aria-label="Close">
+        <i class="fa fa-times"></i>
+      </button>
+      <div class="modal-title ctry_lst_title" id="exampleModalLabel">Choose a country to add</div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="key1" [(ngModel)]="search_currencies" placeholder="Search...">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+      <div class="ctry_cnt">
+        <ul class="ctry_lst">
+          <li *ngFor="let item of currencyData|filter:search_currencies" (click)="save_outage_item(item)" data-toggle="modal"
+            data-target="#exampleModalCenter">
+            <div class="ctry_img"> 
+              <i class="flag_cont flag_cont_bulg" *ngIf="item.country_id==1"></i>
+              <i class="flag_cont flag_cont_croatian" *ngIf="item.country_id==7"></i>
+              <i class="flag_cont flag_cont_czech" *ngIf="item.country_id==9"></i>
+              <i class="flag_cont flag_cont_danish" *ngIf="item.country_id==12"></i>
+              <i class="flag_cont flag_cont_swedan " *ngIf="item.country_id==19"></i>
+              <i class="flag_cont flag_cont_romania " *ngIf="item.country_id==31"></i>
+              <i class="flag_cont flag_cont_euro" *ngIf="item.country_id==2"></i>
+              <i class="flag_cont flag_cont_hungarian" *ngIf="item.country_id==21"></i>
+              <i class="flag_cont flag_cont_polish" *ngIf="item.country_id==29"></i>
+              <i class="flag_cont flag_cont_british" *ngIf="item.country_id==20"></i>
+              <i class="flag_cont flag_cont_us" *ngIf="item.country_id==16"></i>
+              <i class="flag_cont flag_cont_czech" *ngIf="item.country_id==5"></i>
+              <i class="flag_cont flag_cont_us" *ngIf="item.country_id==35"></i>
+            </div>
+            <div class="ctry_crncy_cnt">
+              <div class="ctry_crncy" >
+                  {{item.currency}}
+              </div>
+              <div class="ctry_title">{{item.country_name}}</div>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="cnf_cnt">
+            <div class="cnf_title">
+              Confirm adding account
+            </div>
+            <div class="cnf_img_cnt">
+                <i class="flag_cont2x flag_cont_bulg" *ngIf="country_id_currency==1"></i>
+                <i class="flag_cont2x flag_cont_croatian" *ngIf="country_id_currency==7"></i>
+                <i class="flag_cont2x flag_cont_czech" *ngIf="country_id_currency==9"></i>
+                <i class="flag_cont2x flag_cont_danish" *ngIf="country_id_currency==12"></i>
+                <i class="flag_cont2x flag_cont_swedan " *ngIf="country_id_currency==19"></i>
+                <i class="flag_cont2x flag_cont_romania " *ngIf="country_id_currency==31"></i>
+                <i class="flag_cont2x flag_cont_euro" *ngIf="country_id_currency==2"></i>
+                <i class="flag_cont2x flag_cont_hungarian" *ngIf="country_id_currency==21"></i>
+                <i class="flag_cont2x flag_cont_polish" *ngIf="country_id_currency==29"></i>
+                <i class="flag_cont2x flag_cont_british" *ngIf="country_id_currency==20"></i>
+                <i class="flag_cont2x flag_cont_us" *ngIf="country_id_currency==16"></i>
+                <i class="flag_cont2x flag_cont_czech" *ngIf="country_id_currency==5"></i>
+                <i class="flag_cont2x flag_cont_us" *ngIf="country_id_currency==35"></i>
+            </div>
+            <form #cfb="ngForm">
+              <p>Would to like to add <br><b>{{country_name}}</b> account</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-block btn-outline-primary" data-dismiss="modal">Cancel</button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-primary btn-block" (click)="createAccount()"
+                    data-dismiss="modal">Confirm</button>
+                </div>
+              </div>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="container-fluid">
+  <div  [ngClass]="layout === true ? 'acc_lst card_style' : 'acc_lst list_style'">
+    <div class="acc_cont" *ngFor="let item of accountData|filter: search_accounts">
+      <div class="acc_card">
+        <div class="acc_title">{{item.currency}}</div>
+        <div class="acc_val">
+        <span *ngIf="item.currency=='BGN'">BGN Лв.{{item.balance}}</span>
+        <span *ngIf="item.currency=='HRK'">HRK Kn{{item.balance}}</span>
+        <span *ngIf="item.currency=='CZK'">CZK Kč{{item.balance}}</span>
+        <span *ngIf="item.currency=='DKK'">DKK Kr.{{item.balance}}</span>
+        <span *ngIf="item.currency=='SEK'">SEK Kr{{item.balance}}</span>
+        <span *ngIf="item.currency=='RON'">RON lei{{item.balance}}</span>
+        <span *ngIf="item.currency=='EUR'">EUR €{{item.balance}}</span>
+        <span *ngIf="item.currency=='HUF'">HUF Ft{{item.balance}}</span>
+        <span *ngIf="item.currency=='GBP'">GBP £{{item.balance}}</span>
+        <span *ngIf="item.currency=='GIP'">GIP £{{item.balance}}</span>
+        <span *ngIf="item.currency=='INR'">INR ₹{{item.balance}}</span>
+        <span *ngIf="item.currency=='PLZ'">PLZ zł{{item.balance}}</span>
+        <span *ngIf="item.currency=='USD'">USD ${{item.balance}}</span>
+        </div>
+        <div class="acc_flag">
+            <i class="flag_cont flag_cont_bulg" *ngIf="item.currency=='BGN'"></i>
+            <i class="flag_cont flag_cont_croatian" *ngIf="item.currency=='HRK'"></i>
+            <i class="flag_cont flag_cont_czech" *ngIf="item.currency=='CZK'"></i>
+            <i class="flag_cont flag_cont_danish" *ngIf="item.currency=='DKK'"></i>
+            <i class="flag_cont flag_cont_swedan " *ngIf="item.currency=='SEK'"></i>
+            <i class="flag_cont flag_cont_romania " *ngIf="item.currency=='RON'"></i>
+            <i class="flag_cont flag_cont_euro" *ngIf="item.currency=='EUR'"></i>
+            <i class="flag_cont flag_cont_hungarian" *ngIf="item.currency=='HUF'"></i>
+            <i class="flag_cont flag_cont_polish" *ngIf="item.currency=='PLZ'"></i>
+            <i class="flag_cont flag_cont_british" *ngIf="item.currency=='GBP'"></i>
+            <i class="flag_cont flag_cont_us" *ngIf="item.currency=='GIP'"></i>
+            <i class="flag_cont flag_cont_czech" *ngIf="item.currency=='INR'"></i>
+            <i class="flag_cont flag_cont_czech" *ngIf="item.currency=='USD'"></i>
+        </div>
+        <div class="acc_status">
+          <button type="button" class="btn btn-sm active" *ngIf="item.status=='Active'"
+            (click)="deactivateAccount(item)">Active</button>
+          <button type="button" class="btn btn-sm inactive" *ngIf="item.status=='InActive'"
+            (click)="activateAccount(item)">Deactivate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="add_money" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-body body_popup">
+              <div class="add_money">
+                  <img src="../../../../../assets/images/addicon.png" alt="path not correct" />
+                  <h4>Add € 10 or More</h4>
+                  <p>Book we hook up with an account,you need to add money.you can spend or withdraw this money
+                      later</p>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <button class="btn btn-outline-primary btn-block" (click)="skip()">Skip</button>
+                      </div>
+                      <div class="col-md-6">
+                          <button class="btn btn-primary btn-block" (click)="addMoney()">Add Money</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

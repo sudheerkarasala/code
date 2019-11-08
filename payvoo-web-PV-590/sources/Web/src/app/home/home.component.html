@@ -1,0 +1,124 @@
+<toastr-notification></toastr-notification> 
+<nav class="navbar navbar-expand-sm bg-light" *ngIf="authService.accountMatch(['Personal'])">
+  <div class="bars_cnt">
+    <i class="fa fa-bars"></i>
+  </div>
+  <a class="navbar-brand" href="\"><img src="../../assets/images/payvoo_logo.png"></a>
+  <ul class="navbar-nav ml-auto">
+    <!-- <li class="nav-item">
+      <a class="nav-link">
+        <i class="notification_icn">
+          <img class="img-fluid" src="../../assets/images/icons/notification.png">
+        </i>
+      </a>
+    </li> -->
+
+    <li class="nav-item">
+      <div class="dropdown profile_dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <!-- <img src="../../assets/images/profile_img.png"> -->
+          <span>{{firstName}} {{lastName}}</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="margin-left: -49px;" (click)="getKYCStatus()">
+          <a class="dropdown-item">KYC Status: <span style="color: red">{{KYCStatus}}</span></a>
+          <a class="dropdown-item" routerLink="profile/personal" routerLinkActive="active">Profile</a>
+          <a class="dropdown-item" (click)="logoutAction()">Logout</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+</nav>
+<div class="left_nav" *ngIf="authService.accountMatch(['Personal'])">
+  <div class="close_btn">
+    <i class="fa fa-times"></i>
+  </div>
+  <ul class="left_nav_items">
+    <li routerLink="/home/account-index/getaccount" [class.active]="accountActive">
+        <i class="nav_icn icn_accounts"></i>Accounts
+    </li>
+    <li>
+      <i class="nav_icn icn_payments"></i>Payments
+    </li>
+    <li (click)="logoutAction()">
+        <i class="fa fa-sign-out"></i>Logout
+      </li>
+  </ul>
+</div>
+<nav class="navbar navbar-expand-sm bg-light" *ngIf="authService.accountMatch(['Business'])">
+  <a class="navbar-brand" href="\"><img src="../../assets/images/payvoo_logo.png"></a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <i class="notification_icn">
+        <img class="img-fluid" src="../../assets/images/icons/notification.png">
+      </i>
+    </li>
+
+    <li class="nav-item">
+      <div class="dropdown profile_dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <!-- <img src="../../assets/images/profile_img.png"> -->
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="margin-left: -49px;">
+          <a class="dropdown-item">KYC Status: <span style="color: red">{{KYCStatus}}</span></a>
+          <a class="dropdown-item" >Profile</a>
+          <a class="dropdown-item">Logout</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div class="left_nav" *ngIf="authService.accountMatch(['Business'])">
+  <ul class="left_nav_items">
+    <li routerLink="/bus-application" routerLinkActive="active">
+      <i class="fa fa-file-text-o"></i>Application
+    </li>
+    <!-- <li>
+        <i class="fa fa-file-text-o"></i>Accounts
+      </li> -->
+
+    <li (click)="logoutAction()">
+      <i class="fa fa-sign-out"></i>Logout
+    </li>
+  </ul>
+</div>
+
+<!-- sandbox login -->
+
+<nav class="navbar navbar-expand-sm bg-light" *ngIf="authService.accountMatch(['sandbox'])">
+  <a class="navbar-brand" href="\"><img src="../../assets/images/payvoo_logo.png"></a>
+  <ul class="navbar-nav ml-auto">
+    <!-- <li class="nav-item">
+      <i class="notification_icn">
+        <img class="img-fluid" src="../../assets/images/icons/notification.png">
+      </i>
+    </li> -->
+
+    <li class="nav-item">
+      <div class="dropdown profile_dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <!-- <img src="../../assets/images/profile_img.png"> -->
+          <span>{{firstName}} {{lastName}}</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="margin-left: -49px;">
+          <a class="dropdown-item" (click)="getKYCStatus">Profile</a>
+          <a class="dropdown-item" (click)="logoutAction()">Logout</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div class="left_nav" *ngIf="authService.accountMatch(['sandbox'])">
+  <ul class="left_nav_items">
+    <li routerLink="/sandbox" class="active cursor_pointer">
+      <i class="fa fa-th" aria-hidden="true"></i>Sandbox
+    </li>
+  </ul>
+</div>
+<div class="main_body">
+  <router-outlet></router-outlet>
+  <div class="nav_backdrop "></div>
+</div>

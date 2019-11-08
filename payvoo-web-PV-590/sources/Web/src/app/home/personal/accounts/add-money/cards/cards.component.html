@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card add_money_card">
+      <form [formGroup]="cardDetailsForm">
+        <h3 class="card_header">Enter Card Details</h3>
+        <p><i class="fa fa-lock"></i> Card details are saved securely</p>
+        <div class="panel-body">
+          <div class="form-group float_label">
+            <input type="text" class="form-control" formControlName="name_on_card" placeholder="&nbsp;">
+            <label>Name on card</label>
+          </div>
+          <div class="form-group float_label">
+            <!-- <input type="text" class="form-control"  [(ngModel)]='cardNumber'  maxlength="19" minlength="16" formControlName="card_number"   (keyup)="getCardType(cardNumber)"
+              placeholder="&nbsp;"> -->
+              <input type='text' class="form-control" maxlength="23" minlength="19"  [(ngModel)]='cardNumber' formControlName="card_number" (keyup)="getCardType(cardNumber)" [dropSpecialCharacters]="false" [validation]="false"  mask="0000 0000 0000 0000 000"   placeholder="&nbsp;">
+            <label>16-19 digits card number</label>
+            <i *ngIf="type=='visa'" class="card_type_cnt card_visa"></i>
+            <i *ngIf="type=='mastercard'" class="card_type_cnt card_master"></i>
+            <i *ngIf="type=='jcb'" class="card_type_cnt card_jcb"></i>
+            <i *ngIf="type=='diners-club'" class="card_type_cnt card_dci"></i>
+            <i *ngIf="type=='unionpay'" class="card_type_cnt card_unionpay"></i>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 col-md-6">
+              <div class="form-group float_label">
+              <input type="text" class="form-control" formControlName="card_exp" placeholder="&nbsp;" [validation]="true"  mask="00/0000">
+                <label>Expiry date (mm/yy)</label>
+              </div>
+            </div>
+            <div class="col-xs-4 col-md-4 pull-right">
+              <div class="form-group float_label">
+                <input type="text" class="form-control" id='cvv' maxlength="3" minlength="3" formControlName="card_cvv"
+                  placeholder="&nbsp;">
+                <label>CVV</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-xs-6 col-md-6">
+              <div class="form-group">
+                <button class="btn btn-outline-primary btn-block" routerLink="/home/add-money">Cancel</button>
+              </div>
+            </div>
+            <div class="col-xs-6 col-md-6 pull-right">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" [disabled]="cardDetailsForm.invalid"
+                  (click)="submitCard(cardDetailsForm.value)">Save card</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+</div>
